@@ -30,14 +30,10 @@ pipeline {
          /* Deploy the image to OKE*/
 
         steps {
-		    sh 'whoami'
-			sh 'export PATH=$PATH:/home/opc/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/opc/.local/bin:/home/opc/bin'
-			sh 'echo $PATH'
-			sh 'whereis oci'
-			sh 'oci -v'
-			sh 'kubectl get nodes'
+		    sh '/home/opc/bin/oci -v'
+			sh '/usr/bin/kubectl get nodes'
             /*sh 'oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.iad.aaaaaaaaae2ginbygm2dgnzrgi3dmndegiydsmddgm4wmntcmctdgnrygmzw --file $HOME/.kube/config --region us-ashburn-1 --token-version 2.0.0' */
-            sh 'kubectl apply -f kubernetes-deployment.yml'
+            sh '/usr/bin/kubectl apply -f kubernetes-deployment.yml'
            
            }
          }     
