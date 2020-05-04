@@ -1,5 +1,5 @@
 <html>
-<!-- table banch -->
+
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -16,10 +16,10 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
 
-function jsonCallback(json){
-  console.log(json);
-  document.getElementById("content").innerHTML = JSON.stringify(json);
-}
+        function jsonCallback(json) {
+            console.log(json);
+            document.getElementById("content").innerHTML = JSON.stringify(json);
+        }
         function call() {
             $.ajax({
                 type: 'GET',
@@ -29,7 +29,40 @@ function jsonCallback(json){
                 success: function (data) {
                     console.log("success from callback\n");
                     console.log(data)
-                    document.getElementById("content").innerHTML = JSON.stringify(data);
+                    //document.getElementById("content").innerHTML = JSON.stringify(data);
+                    table6 = document.createElement('table');
+                    table6.setAttribute("class", "table");
+		    keys = [];
+		    if(data.length > 0){
+                    	keys = Object.keys(data[0]);
+		    }
+                    if (keys.length) {
+                        var tr4 = document.createElement('tr');
+                        table6.appendChild(tr4)
+                        for (var i = 1; i <= keys.length; i++) {
+
+                            var th4 = document.createElement('th')
+                            var text4 = document.createTextNode(keys[i - 1])
+                            th4.appendChild(text4)
+                            //tr.appendChild(td)
+                            tr4.appendChild(th4)
+
+                        }
+
+                        for (var j = 0; j < data.length; j++) {
+                            tr_inner = document.createElement('tr');
+                            for (var k = 0; k < keys.length; k++) {
+                                td_inner = document.createElement('td');
+                                text_inner = document.createTextNode(data[j][keys[k]]);
+                                console.log(data[j][keys[k]]);
+                                td_inner.appendChild(text_inner);
+                                tr_inner.appendChild(td_inner);
+                            }
+
+
+                            table6.appendChild(tr_inner)
+                        }
+			document.body.appendChild(table6);                    }
 
                 },
                 // jsonpCallback: 'jsonCallback',
@@ -45,7 +78,8 @@ function jsonCallback(json){
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1><button type="button" class="btn btn-outline-success" onclick="call()">GET Api Data</button></h1>
+                <h1><button type="button" class="btn btn-outline-success" onclick="call()">Read table form DBCS</button>
+                </h1>
                 <div>
                     <p class="lead" id="content">
 
