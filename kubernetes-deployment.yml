@@ -1,0 +1,39 @@
+###maintained by Divya Kashyap
+###yaml file to deploy python app onto OKE with ATP integration
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pythonapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pythonapp
+  template:
+    metadata:
+      labels:
+        app: pythonapp
+    spec:
+      containers:
+      - name: app-server
+        image: iad.ocir.io/orasenatdhubsred01/divya-repo:${BUILD_NUMBER}
+        ports:
+        - name: app-server
+          containerPort: 5000
+          protocol: TCP
+      imagePullSecrets:
+      - name: ocirsecret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pythonapp
+spec:
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: pythonapp
+  type: LoadBalancer
