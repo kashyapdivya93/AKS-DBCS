@@ -33,8 +33,8 @@ pipeline {
 		    /*sh '/home/opc/bin/oci -v'*/
 			/*sh '/usr/bin/kubectl get nodes'*/
             /*sh 'oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.iad.aaaaaaaaae2ginbygm2dgnzrgi3dmndegiydsmddgm4wmntcmctdgnrygmzw --file $HOME/.kube/config --region us-ashburn-1 --token-version 2.0.0' */
-            sh 'sudo runuser -l opc -c 'cat kubernetes-deployment.yml | sed "s/{{BUILD_NUMBER}}/${BUILD_NUMBER}/g" | kubectl delete -f -''
-			sh 'sudo runuser -l opc -c 'cat kubernetes-deployment.yml | sed "s/{{BUILD_NUMBER}}/${BUILD_NUMBER}/g" | kubectl apply -f -''
+            sh 'sudo runuser -l opc -c 'cat kubernetes-deployment.yml | sed "\s/{{BUILD_NUMBER}}/${BUILD_NUMBER}/g"\ | kubectl delete -f -''
+			sh 'sudo runuser -l opc -c 'cat kubernetes-deployment.yml | sed "\s/{{BUILD_NUMBER}}/${BUILD_NUMBER}/g"\ | kubectl apply -f -''
            
            }
          }     
