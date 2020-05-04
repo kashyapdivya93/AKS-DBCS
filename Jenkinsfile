@@ -30,10 +30,10 @@ pipeline {
          /* Deploy the image to OKE*/
 
         steps {
-		    sh '/home/opc/bin/oci -v'
-			sh '/usr/bin/kubectl get nodes'
+		    /*sh '/home/opc/bin/oci -v'*/
+			/*sh '/usr/bin/kubectl get nodes'*/
             /*sh 'oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.iad.aaaaaaaaae2ginbygm2dgnzrgi3dmndegiydsmddgm4wmntcmctdgnrygmzw --file $HOME/.kube/config --region us-ashburn-1 --token-version 2.0.0' */
-            sh '/usr/bin/kubectl apply -f kubernetes-deployment.yml'
+            sh 'sh ../../deployscript.sh'
            
            }
          }     

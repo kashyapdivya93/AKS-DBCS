@@ -1,0 +1,1 @@
+sudo runuser -l opc -c 'kubectl apply -f /var/lib/jenkins/kubernetes-deployment.yml'
