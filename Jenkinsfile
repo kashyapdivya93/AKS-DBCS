@@ -6,7 +6,7 @@ pipeline {
         /* This stage builds the actual image; synonymous to
            docker build on the command line */
             steps {
-            sh "sudo docker build . -t pythonapp:${BUILD_NUMBER}"
+            sh "docker build . -t pythonapp:${BUILD_NUMBER}"
             }    
         }
         stage('Test image') {
@@ -20,9 +20,9 @@ pipeline {
          /* Final stage of build; Push the 
             docker image to our OCI private Registry*/
         steps {
-            sh "sudo docker login -u 'orasenatdhubsred01/oracleidentitycloudservice/divya.k.kashyap@oracle.com' -p '3T_LujP;LRyI_tA:qPC7' iad.ocir.io"
-            sh "sudo docker tag pythonapp:${BUILD_NUMBER} iad.ocir.io/orasenatdhubsred01/divya-repo:${BUILD_NUMBER}"
-            sh 'sudo docker push iad.ocir.io/orasenatdhubsred01/divya-repo:${BUILD_NUMBER}'
+            sh "docker login -u 'orasenatdhubsred01/oracleidentitycloudservice/divya.k.kashyap@oracle.com' -p '3T_LujP;LRyI_tA:qPC7' iad.ocir.io"
+            sh "docker tag pythonapp:${BUILD_NUMBER} iad.ocir.io/orasenatdhubsred01/divya-repo:${BUILD_NUMBER}"
+            sh 'docker push iad.ocir.io/orasenatdhubsred01/divya-repo:${BUILD_NUMBER}'
             
            }
          } 
