@@ -30,7 +30,8 @@ pipeline {
          /* Deploy the image to OKE*/
 
         steps {
-		    sh 'kubectl get nodes'
+		    sh 'whoami'
+			sh 'kubectl cluster-info'
             /*sh 'oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.iad.aaaaaaaaae2ginbygm2dgnzrgi3dmndegiydsmddgm4wmntcmctdgnrygmzw --file $HOME/.kube/config --region us-ashburn-1 --token-version 2.0.0' */
             sh 'kubectl apply -f kubernetes-deployment.yml'
            
