@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: app-server
-        image: iad.ocir.io/orasenatdhubsred01/divya-repo:${BUILD_NUMBER}
+        image: iad.ocir.io/orasenatdhubsred01/divya-repo:{{BUILD_NUMBER}}
         ports:
         - name: app-server
           containerPort: 5000
