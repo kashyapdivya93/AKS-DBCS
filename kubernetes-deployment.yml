@@ -14,16 +14,39 @@ spec:
     metadata:
       labels:
         app: pythonapp
-    spec:
-      containers:
-      - name: app-server
-        image: iad.ocir.io/orasenatdhubsred01/divya-repo:{{BUILD_NUMBER}}
+  spec:
+    containers:
+      - name: pythonapp
+        image: kashyap93/pythondbcs:1.0
+        env:
+          - name: username
+            valueFrom:
+              secretKeyRef:
+                name: app-svc-secrets
+                key: username
+          - name: password
+            valueFrom:
+              secretKeyRef:
+                name: app-svc-secrets
+                key: password
+          - name: service_name
+            valueFrom:
+              secretKeyRef:
+                name: app-svc-secrets
+                key: service_name
+          - name: dbhostIP
+            valueFrom:
+              secretKeyRef:
+                name: app-svc-secrets
+                key: dbhostIP
+          - name: table_name
+            valueFrom:
+              secretKeyRef:
+                name: app-svc-secrets
+                key: table_name
+        imagePullPolicy: Always
         ports:
-        - name: app-server
-          containerPort: 5000
-          protocol: TCP
-      imagePullSecrets:
-      - name: ocirsecret
+          - containerPort: 8080
 
 ---
 apiVersion: v1
@@ -36,4 +59,4 @@ spec:
     targetPort: 5000
   selector:
     app: pythonapp
-  type: LoadBalancer
+  type: NodePort
