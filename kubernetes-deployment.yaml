@@ -46,7 +46,7 @@ spec:
                 key: table_name
         imagePullPolicy: Always
         ports:
-          - containerPort: 8080
+          - containerPort: 5000
 
 ---
 apiVersion: v1
