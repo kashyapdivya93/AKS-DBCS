@@ -1,2 +1,0 @@
-sudo runuser -l opc -c 'cat kubernetes-deployment.yml | sed "s/{{BUILD_NUMBER}}/${BUILD_NUMBER}/g" | kubectl delete -f -'
-sudo runuser -l opc -c 'cat kubernetes-deployment.yml | sed "s/{{BUILD_NUMBER}}/${BUILD_NUMBER}/g" | kubectl apply -f -'
