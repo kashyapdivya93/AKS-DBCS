@@ -14,11 +14,11 @@ import os
 
 #Oracle Database Cloud Service credentials
 #documentation https://docs.cloud.oracle.com/en-us/iaas/Content/Database/Tasks/connectingDB.htm
-username = base64.b64decode(os.environ['username']).decode('utf-8')
-password = base64.b64decode(os.environ['password']).decode('utf-8')
-ip = base64.b64decode(os.environ['dbhostIP']).decode('utf-8')
-service_name = base64.b64decode(os.environ['service_name']).decode('utf-8')
-tableName = base64.b64decode(os.environ['table_name']).decode('utf-8')
+username = os.environ['username']
+password = os.environ['password']
+ip = os.environ['dbhostIP']
+service_name = os.environ['service_name']
+tableName = os.environ['table_name']
 
 
 #Creating Connection sursor
