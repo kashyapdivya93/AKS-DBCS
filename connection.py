@@ -8,7 +8,8 @@
 import sqlalchemy
 import cx_Oracle
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker 
+import base64
 
 #Oracle Database Cloud Service credentials
 #documentation https://docs.cloud.oracle.com/en-us/iaas/Content/Database/Tasks/connectingDB.htm
