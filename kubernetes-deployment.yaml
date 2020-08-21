@@ -14,39 +14,39 @@ spec:
     metadata:
       labels:
         app: pythonapp
-  spec:
-    containers:
-      - name: pythonapp
-        image: kashyap93/pythondbcs:1.0
-        env:
-          - name: username
-            valueFrom:
-              secretKeyRef:
-                name: app-svc-secrets
-                key: username
-          - name: password
-            valueFrom:
-              secretKeyRef:
-                name: app-svc-secrets
-                key: password
-          - name: service_name
-            valueFrom:
-              secretKeyRef:
-                name: app-svc-secrets
-                key: service_name
-          - name: dbhostIP
-            valueFrom:
-              secretKeyRef:
-                name: app-svc-secrets
-                key: dbhostIP
-          - name: table_name
-            valueFrom:
-              secretKeyRef:
-                name: app-svc-secrets
-                key: table_name
-        imagePullPolicy: Always
-        ports:
-          - containerPort: 5000
+    spec:
+      containers:
+        - name: pythonapp
+          image: kashyap93/pythondbcs:1.0
+          env:
+            - name: username
+              valueFrom:
+                secretKeyRef:
+                  name: app-svc-secrets
+                  key: username
+            - name: password
+              valueFrom:
+                secretKeyRef:
+                  name: app-svc-secrets
+                  key: password
+            - name: service_name
+              valueFrom:
+                secretKeyRef:
+                  name: app-svc-secrets
+                  key: service_name
+            - name: dbhostIP
+              valueFrom:
+                secretKeyRef:
+                  name: app-svc-secrets
+                  key: dbhostIP
+            - name: table_name
+              valueFrom:
+                secretKeyRef:
+                  name: app-svc-secrets
+                  key: table_name
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
 
 ---
 apiVersion: v1
