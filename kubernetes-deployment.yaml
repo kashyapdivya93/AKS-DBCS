@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: pythonapp
-          image: kashyap93/pythondbcs:1.0
+          image: kashyap93/pythondbcs:4.0
           env:
             - name: username
               valueFrom:
